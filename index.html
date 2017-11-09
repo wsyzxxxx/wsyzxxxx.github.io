@@ -154,6 +154,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Operating System Learning Notes 9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/07/Operating System Learning Notes 9/">Operatng System Learning Notes 9</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/07/Operating System Learning Notes 9/" class="archive-article-date">
+  	<time datetime="2017-11-07T03:10:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Chapter-9-Virtual-Memory"><a href="#Chapter-9-Virtual-Memory" class="headerlink" title="Chapter 9 Virtual Memory"></a>Chapter 9 Virtual Memory</h1><p>Chapter objectives:</p>
+<ul>
+<li>To describe the benefits of a virtual memory system.</li>
+<li>To explain the concepts of demand paging, page-replacement algorithms, and allocation of page frames.</li>
+<li>To discuss the principles of the working-set modes.</li>
+<li>To examine the relationship between shared memory and memory-mapped files.</li>
+<li>To explore how kernel memory is managed.</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/11/07/Operating System Learning Notes 9/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-Notes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/07/Operating System Learning Notes 9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Operating System Learning Notes 1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -178,76 +261,9 @@
 <p>这是我Operating System Concepts 9th Edition及课堂学习心得</p>
 <p>本章主要介绍了一些概念性的知识，对操作系统进行了一个简单的介绍</p>
 </blockquote>
-<p>Concepts:</p>
-<p>An operating system is a program that manages a computer’s hardware.</p>
-<h4 id="Chapter-Objectives："><a href="#Chapter-Objectives：" class="headerlink" title="Chapter Objectives："></a>Chapter Objectives：</h4><ul>
-<li>To describe the basic organization of computer systems.</li>
-<li>To provide a grand tour of the major components of operating systems.</li>
-<li>To give an overview of the many types of computing environments.</li>
-<li>To explore several open-source operating systems.</li>
-</ul>
-<h3 id="1-1-What-Operating-Systems-Do"><a href="#1-1-What-Operating-Systems-Do" class="headerlink" title="1.1 What Operating Systems Do"></a>1.1 What Operating Systems Do</h3><p>Computer system: <em>hardware</em>, <em>operating system</em>, <em>application programs</em>, <em>users</em>.</p>
-<p>Hardware: <strong>CPU</strong>, <strong>memory</strong>, <strong>I/O</strong></p>
-<hr>
-<p>Explore the operating systems from user and system view.</p>
-<h5 id="1-1-1-User-View"><a href="#1-1-1-User-View" class="headerlink" title="1.1.1 User View"></a>1.1.1 User View</h5><ol>
-<li>use PC ,垄断monopolize计算机资源，Concentrate on <strong>ease of use</strong>，not concerned <strong>resource utilization</strong></li>
-<li>use Terminal, maximize resource utilization. CPU, memory and I/O.</li>
-<li>use workstations(server) compromise between individual usability and resource utilization.</li>
-</ol>
-<h5 id="1-1-2-System-View"><a href="#1-1-2-System-View" class="headerlink" title="1.1.2 System View"></a>1.1.2 System View</h5><ol>
-<li>Resource allocator——Manager of these resources</li>
-<li>A control program——Manages the execution of user programs (operation and I/O)</li>
-</ol>
-<h5 id="1-1-3-Defining-Operating-Systems"><a href="#1-1-3-Defining-Operating-Systems" class="headerlink" title="1.1.3 Defining Operating Systems"></a>1.1.3 Defining Operating Systems</h5><blockquote>
-<p>Moore’s Law  predicted that the number of transistors on an integrated circuit would double every eighteen months, and that prediction has held true.  Computers gained in functionality and shrunk in size, leading to a vast number of uses and a vast number and variety of operating systems.</p>
-</blockquote>
-<p>The common functions of controlling and allocating resources are then brought together into one piece of software: the operating system.</p>
-<p><strong>Kernel</strong> —— one program running at all times on the computer.</p>
-<p><strong>System programs</strong> , <strong>Application programs</strong></p>
-<p>Mobile operating systems not only a core kernel but also <strong>middleware</strong> —— a set of software frameworks that provide additional services to application developers.</p>
-<h3 id="1-2-Computer-System-Organization"><a href="#1-2-Computer-System-Organization" class="headerlink" title="1.2 Computer-System Organization"></a>1.2 Computer-System Organization</h3><h5 id="1-2-1-Computer-System-Operation"><a href="#1-2-1-Computer-System-Operation" class="headerlink" title="1.2.1 Computer-System Operation"></a>1.2.1 Computer-System Operation</h5><p><img src="/img/commonbus.png" alt="common bus"></p>
-<p> To ensure orderly access to the shared memory, a memory controller synchronizes access to the memory.</p>
-<p><strong>bootstrap program</strong>. stored in <em>ROM</em>, or <em>EEPROM</em>, known by the general term <em>firmware</em>. locate the operating-system kernel and load it into memory.</p>
-<p><strong>System programs</strong>, loaded into memory at boot time to become <strong>system processes</strong> or <strong>system daemons</strong>(守护进程，后台程序) that run the entire time the kernel is running.</p>
-<p>On UNIX “init”.</p>
-<p><strong>interrupt</strong>, by hardware or software. hardware sending a signal to the CPU by way of the system bus, software executing a special operation called a <strong>system call</strong>(<strong>monitor call</strong>)</p>
-<p>Interrupts are an important part of a computer architecture.</p>
-<p>Since only a predefined number of interrupts is possible, a table of pointers to interrupt routines can be used instead to provide the necessary speed.</p>
-<p>The interrupt architecture must also save the address of the interrupted instruction.</p>
-<p> More recent architectures store the return address on the system stack.</p>
-<blockquote>
-<p>A computer executes many operations in its native word size rather than a byte at a time.</p>
-<p>Networking measurements are an exception to this general rule; they are given in bits (because networks move data a bit at a time).</p>
-</blockquote>
-<h5 id="1-2-2-Storage-Structure"><a href="#1-2-2-Storage-Structure" class="headerlink" title="1.2.2 Storage Structure"></a>1.2.2 Storage Structure</h5><p>The CPU can load instructions only from memory.</p>
-<p><strong>RAM</strong>——main memory——DRAM</p>
-<p>ROM——stored bootstrap program</p>
-<p>EEPROM——store factory-installed programs of smartphones</p>
-<p><strong>load instruction</strong>, moves a byte or word from main memory to an internal register within the CPU.</p>
-<p><strong>store instruction</strong> moves the content of a register to main memory.</p>
-<p>Aside from explicit loads and stores, the CPU automatically loads instructions from main memory for execution.</p>
-<p><strong>instruction-execution cycle</strong> (<em>von Neumann architecture</em>) </p>
-<ul>
-<li>first fetches an instruction from memory and stores that instruction in the <strong>instruction register</strong>.</li>
-<li>instruction decoded, may cause operands(操作数、运算对象) to be fetched from emmory and stored in some internal register.</li>
-<li>after execution, the result may be stored back in memory.</li>
-</ul>
-<p>memory unit sees only a stream of memory addresses.</p>
-<p>We can’t store data in main memory permanently.</p>
-<ol>
-<li>Main memory too small</li>
-</ol>
-<ol>
-<li>Main memory is a volatile storage.</li>
-</ol>
-<p><strong>secondary storage</strong> needed (such as magnetic disk)</p>
-<p>main differences : speed , cost, size, volatility</p>
-<p><img src="/img/storagedevice.png" alt="storage device"></p>
-<p>above solid-state disk —— volatile, solid-state disk and below—— nonvolatile</p>
-<p>flash memory—— slower than DRAM but needs no power to retain its contents.</p>
-<p>NVRAM which is DRAM with battery backup power.</p>
-<h5 id="1-2-3-I-O-Structure"><a href="#1-2-3-I-O-Structure" class="headerlink" title="1.2.3 I/O Structure"></a>1.2.3 I/O Structure</h5>
+        
+          <a class="article-more-a" href="/2017/11/03/Operating System Learning Notes 1/#more">more >></a>
+        
       
 
       
