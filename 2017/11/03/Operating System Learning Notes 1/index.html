@@ -17,7 +17,7 @@
 <meta property="og:description" content="阅读和学习Operating System笔记">
 <meta property="og:image" content="http://yoursite.com/img/commonbus.png">
 <meta property="og:image" content="http://yoursite.com/img/storagedevice.png">
-<meta property="og:updated_time" content="2017-11-07T07:28:01.713Z">
+<meta property="og:updated_time" content="2017-11-17T00:32:56.114Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Operatng System Learning Notes 1">
 <meta name="twitter:description" content="阅读和学习Operating System笔记">
@@ -251,7 +251,90 @@
 <p>above solid-state disk —— volatile, solid-state disk and below—— nonvolatile</p>
 <p>flash memory—— slower than DRAM but needs no power to retain its contents.</p>
 <p>NVRAM which is DRAM with battery backup power.</p>
-<h5 id="1-2-3-I-O-Structure"><a href="#1-2-3-I-O-Structure" class="headerlink" title="1.2.3 I/O Structure"></a>1.2.3 I/O Structure</h5>
+<h5 id="1-2-3-I-O-Structure"><a href="#1-2-3-I-O-Structure" class="headerlink" title="1.2.3 I/O Structure"></a>1.2.3 I/O Structure</h5><h3 id="1-3-Computer-System-Architecture"><a href="#1-3-Computer-System-Architecture" class="headerlink" title="1.3 Computer-System Architecture"></a>1.3 Computer-System Architecture</h3><h5 id="1-3-1-Single-Processor-Systems"><a href="#1-3-1-Single-Processor-Systems" class="headerlink" title="1.3.1 Single-Processor Systems"></a>1.3.1 Single-Processor Systems</h5><h5 id="1-3-2-Multiprocessor-Systems"><a href="#1-3-2-Multiprocessor-Systems" class="headerlink" title="1.3.2 Multiprocessor Systems"></a>1.3.2 Multiprocessor Systems</h5><p>Advantages:</p>
+<ul>
+<li>Increased throughput</li>
+<li>Economy of scale</li>
+<li>Increased reliability</li>
+</ul>
+<p><strong>Asymmetric multiprocessing</strong> / <strong>symmetric multiprocessing</strong></p>
+<h5 id="1-3-3-Clustered-System"><a href="#1-3-3-Clustered-System" class="headerlink" title="1.3.3 Clustered System"></a>1.3.3 Clustered System</h5><h3 id="1-4-Operating-System-Structure"><a href="#1-4-Operating-System-Structure" class="headerlink" title="1.4 Operating-System Structure"></a>1.4 Operating-System Structure</h3><p>Multiprogramming的概念和意义</p>
+<p>increases CPU utiliazaiton by organizing jobs (code and data) so that the CPU always has one to execute.</p>
+<p>job pool——consists of all processes residing on disk awaiting allocation of main memory.</p>
+<p>Time sharing—— a logical exension of multiprogramming. CPU executes multiple jobs by switching among them, but the switches occur so frequently that the users can interact with each program while it is running.</p>
+<p>job scheduling</p>
+<p>CPU scheduling</p>
+<p>swapping</p>
+<p>virtual memory</p>
+<p>physical memory</p>
+<p>logical memory</p>
+<h3 id="1-5-Operating-System-Operations"><a href="#1-5-Operating-System-Operations" class="headerlink" title="1.5 Operating-System Operations"></a>1.5 Operating-System Operations</h3><p>Modern operating systems are <strong>interrupt driven</strong></p>
+<p>A <strong>trap</strong> (or an exception) is a software-generated interrupt caused either by an error (for example, division by zero or invalid memory access) or by a specific request from a user program that an operating-system service be performed.</p>
+<h5 id="1-5-1-Dual-Mode-and-Multimode-Operation"><a href="#1-5-1-Dual-Mode-and-Multimode-Operation" class="headerlink" title="1.5.1 Dual-Mode and Multimode Operation"></a>1.5.1 Dual-Mode and Multimode Operation</h5><p><strong>User mode &amp; kernel mode</strong></p>
+<p><strong>mode bit</strong> kernel 0 / user 1</p>
+<p>Privileged instructions —— only in kernel mode</p>
+<p>How a system call executes.</p>
+<h5 id="1-5-2-Timer"><a href="#1-5-2-Timer" class="headerlink" title="1.5.2 Timer"></a>1.5.2 Timer</h5><p>We can use the timer to prevent a user program from running too long.</p>
+<h3 id="1-6-Process-Management"><a href="#1-6-Process-Management" class="headerlink" title="1.6 Process Management"></a>1.6 Process Management</h3><p>a program by itself is not a process. A program is a passive entity, like the contents of a file stored on disk, whereas a process is an active entity.</p>
+<ul>
+<li>Scheduling processes and threads on the CPUs</li>
+<li>Creating and deleting both user and system processes</li>
+<li>Suspending and resuming processes</li>
+<li>Providing mechanisms for process synchronization</li>
+<li>Providing mechanisms for process communication</li>
+</ul>
+<h3 id="1-7-Memory-Management"><a href="#1-7-Memory-Management" class="headerlink" title="1.7 Memory Management"></a>1.7 Memory Management</h3><ul>
+<li>Keeping track of which parts of memory are currently being used and who is using them</li>
+<li>Deciding which processes (or parts of processes) and data to move into and out of memory.</li>
+<li>Allocating and deallocating memory space as needed.</li>
+</ul>
+<h3 id="1-8-Storage-Management"><a href="#1-8-Storage-Management" class="headerlink" title="1.8 Storage Management"></a>1.8 Storage Management</h3><p><strong>file</strong> —— abstracts</p>
+<h5 id="1-8-1-File-System-Management"><a href="#1-8-1-File-System-Management" class="headerlink" title="1.8.1 File-System Management"></a>1.8.1 File-System Management</h5><ul>
+<li>Creating and deleting files</li>
+<li>Creating and deleting directories to organize files</li>
+<li>Supporting primitives for manipulating files and directories</li>
+<li>Mapping files onto secondary storage</li>
+<li>Backing up files on stable ( nonvolatile) storage media</li>
+</ul>
+<h5 id="1-8-2-Mass-Storage-Management"><a href="#1-8-2-Mass-Storage-Management" class="headerlink" title="1.8.2 Mass-Storage Management"></a>1.8.2 Mass-Storage Management</h5><ul>
+<li>Free-space management</li>
+<li>Storage allocation</li>
+<li>Disk scheduling</li>
+</ul>
+<h5 id="1-8-3-Caching"><a href="#1-8-3-Caching" class="headerlink" title="1.8.3 Caching"></a>1.8.3 Caching</h5><p><strong>cache coherency</strong></p>
+<h5 id="1-8-4-I-O-Systems"><a href="#1-8-4-I-O-Systems" class="headerlink" title="1.8.4 I/O Systems"></a>1.8.4 I/O Systems</h5><h3 id="1-9-Protection-and-Security"><a href="#1-9-Protection-and-Security" class="headerlink" title="1.9 Protection and Security"></a>1.9 Protection and Security</h3><p><strong>Protection</strong> </p>
+<p><strong>user identifiers</strong></p>
+<p><strong>group identifiers</strong></p>
+<h3 id="1-10-Kernel-Data-Structures"><a href="#1-10-Kernel-Data-Structures" class="headerlink" title="1.10 Kernel Data Structures"></a>1.10 Kernel Data Structures</h3><h5 id="1-10-1-Lists-Stacks-and-Queue"><a href="#1-10-1-Lists-Stacks-and-Queue" class="headerlink" title="1.10.1 Lists, Stacks and Queue"></a>1.10.1 Lists, Stacks and Queue</h5><p><strong>Array</strong></p>
+<p><strong>list</strong></p>
+<p><strong>LIFO</strong>——Stack</p>
+<p><strong>FIFO</strong>——Queue</p>
+<h5 id="1-10-2-Trees"><a href="#1-10-2-Trees" class="headerlink" title="1.10.2 Trees"></a>1.10.2 Trees</h5><p>tree -&gt; binary tree -&gt; binary search tree -&gt; balanced binary search tree</p>
+<h5 id="1-10-3-Hash-Functions-and-Maps"><a href="#1-10-3-Hash-Functions-and-Maps" class="headerlink" title="1.10.3 Hash Functions and Maps"></a>1.10.3 Hash Functions and Maps</h5><p><strong>hash function</strong></p>
+<p><strong>hash collision</strong></p>
+<p><strong>hash map</strong></p>
+<h5 id="1-10-4-Bitmaps"><a href="#1-10-4-Bitmaps" class="headerlink" title="1.10.4 Bitmaps"></a>1.10.4 Bitmaps</h5><h3 id="1-11-Computing-Environments"><a href="#1-11-Computing-Environments" class="headerlink" title="1.11 Computing Environments"></a>1.11 Computing Environments</h3><h5 id="1-11-1-Traditional-Computing"><a href="#1-11-1-Traditional-Computing" class="headerlink" title="1.11.1 Traditional Computing"></a>1.11.1 Traditional Computing</h5><h5 id="1-11-2-Mobile-Computing"><a href="#1-11-2-Mobile-Computing" class="headerlink" title="1.11.2 Mobile Computing"></a>1.11.2 Mobile Computing</h5><h5 id="1-11-3-Distributed-Systems"><a href="#1-11-3-Distributed-Systems" class="headerlink" title="1.11.3 Distributed Systems"></a>1.11.3 Distributed Systems</h5><h5 id="1-11-4-Client-Server-Computing"><a href="#1-11-4-Client-Server-Computing" class="headerlink" title="1.11.4 Client-Server Computing"></a>1.11.4 Client-Server Computing</h5><h5 id="1-11-5-Peer-to-Peer-Computing"><a href="#1-11-5-Peer-to-Peer-Computing" class="headerlink" title="1.11.5 Peer-to-Peer Computing"></a>1.11.5 Peer-to-Peer Computing</h5><h5 id="1-11-6-Virtualization"><a href="#1-11-6-Virtualization" class="headerlink" title="1.11.6 Virtualization"></a>1.11.6 Virtualization</h5><h5 id="1-11-7-Cloud-Computing"><a href="#1-11-7-Cloud-Computing" class="headerlink" title="1.11.7 Cloud Computing"></a>1.11.7 Cloud Computing</h5><h5 id="1-11-8-Real-Time-Embedded-Systems"><a href="#1-11-8-Real-Time-Embedded-Systems" class="headerlink" title="1.11.8 Real-Time Embedded Systems"></a>1.11.8 Real-Time Embedded Systems</h5><h3 id="1-12-Oepn-Source-Operating-Systems"><a href="#1-12-Oepn-Source-Operating-Systems" class="headerlink" title="1.12 Oepn-Source Operating Systems"></a>1.12 Oepn-Source Operating Systems</h3><p>Linux open-source</p>
+<p>WIndows closed-source</p>
+<p>Apple kernel：Darwin open-source， some components closed-source</p>
+<h5 id="1-12-1-History"><a href="#1-12-1-History" class="headerlink" title="1.12.1 History"></a>1.12.1 History</h5><h5 id="1-12-2-Linux"><a href="#1-12-2-Linux" class="headerlink" title="1.12.2 Linux"></a>1.12.2 Linux</h5><h5 id="1-12-3-BSD-UNIX"><a href="#1-12-3-BSD-UNIX" class="headerlink" title="1.12.3 BSD UNIX"></a>1.12.3 BSD UNIX</h5><h5 id="1-12-4-Solaris"><a href="#1-12-4-Solaris" class="headerlink" title="1.12.4 Solaris"></a>1.12.4 Solaris</h5><h5 id="1-12-5-Open-Source-Systems-as-Learning-Tools"><a href="#1-12-5-Open-Source-Systems-as-Learning-Tools" class="headerlink" title="1.12.5 Open-Source Systems as Learning Tools"></a>1.12.5 Open-Source Systems as Learning Tools</h5><h3 id="1-13-Summary"><a href="#1-13-Summary" class="headerlink" title="1.13 Summary"></a>1.13 Summary</h3><p>Operating System</p>
+<p>Main memory</p>
+<p>secondary storage</p>
+<p>Single-processor systems / multiprocessor systems</p>
+<p>SMP</p>
+<p>CLustered systems</p>
+<p>multiprogramming</p>
+<p>time-sharing</p>
+<p>user mode and kernel mode</p>
+<p>privileged instructions —— kernel mode</p>
+<p>memory protection</p>
+<p>timer</p>
+<p>process management</p>
+<p>memory management</p>
+<p>protection and security</p>
+<p>data structure</p>
+<p>Computing</p>
+<p>open-source</p>
+
       
 
       
@@ -334,11 +417,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/07/Operating System Learning Notes 9/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/11/03/Operating System Learning Notes 2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Operatng System Learning Notes 9
+          Operatng System Learning Notes 1
         
       </div>
     </a>
@@ -388,7 +471,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 Will.xxx
+    		&copy; 2018 Will.xxx
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -469,6 +552,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">-论文阅读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">-技术记录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">-notes</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">-Notes</a>

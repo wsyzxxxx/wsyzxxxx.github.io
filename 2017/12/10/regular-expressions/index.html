@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/11 | Will&#39;s Blog</title>
+  <title>regular-expressions | Will&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Some problems and solutions.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Will&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2017/11/index.html">
+  <meta name="description" content="Regular-expressions Learning 学习笔记from http://www.regular-expressions.info  1.什么是正则表达式用来匹配(查询)一串字符中对应的文字，比如\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b可以匹配所有的邮件地址 比如reg(ular expressions?|ex(p|es)?)可以匹配所有正">
+<meta name="keywords" content="-notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="regular-expressions">
+<meta property="og:url" content="http://yoursite.com/2017/12/10/regular-expressions/index.html">
 <meta property="og:site_name" content="Will&#39;s Blog">
-<meta property="og:description" content="Some problems and solutions.">
+<meta property="og:description" content="Regular-expressions Learning 学习笔记from http://www.regular-expressions.info  1.什么是正则表达式用来匹配(查询)一串字符中对应的文字，比如\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b可以匹配所有的邮件地址 比如reg(ular expressions?|ex(p|es)?)可以匹配所有正">
+<meta property="og:updated_time" content="2017-12-12T13:54:13.388Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Will&#39;s Blog">
-<meta name="twitter:description" content="Some problems and solutions.">
+<meta name="twitter:title" content="regular-expressions">
+<meta name="twitter:description" content="Regular-expressions Learning 学习笔记from http://www.regular-expressions.info  1.什么是正则表达式用来匹配(查询)一串字符中对应的文字，比如\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b可以匹配所有的邮件地址 比如reg(ular expressions?|ex(p|es)?)可以匹配所有正">
   
     <link rel="alternative" href="/atom.xml" title="Will&#39;s Blog" type="application/atom+xml">
   
@@ -152,174 +154,241 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-regular-expressions" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      regular-expressions
+    </h1>
+  
+
+        
+        <a href="/2017/12/10/regular-expressions/" class="archive-article-date">
+  	<time datetime="2017-12-10T13:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-10</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Regular-expressions-Learning"><a href="#Regular-expressions-Learning" class="headerlink" title="Regular-expressions Learning"></a>Regular-expressions Learning</h2><blockquote>
+<p>学习笔记from <a href="http://www.regular-expressions.info" target="_blank" rel="external">http://www.regular-expressions.info</a></p>
+</blockquote>
+<h4 id="1-什么是正则表达式"><a href="#1-什么是正则表达式" class="headerlink" title="1.什么是正则表达式"></a>1.什么是正则表达式</h4><p>用来匹配(查询)一串字符中对应的文字，比如<code>\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b</code>可以匹配所有的邮件地址</p>
+<p>比如<code>reg(ular expressions?|ex(p|es)?)</code>可以匹配所有正则表达式的英文名称</p>
+<p>英文名称为：Regular-exprerssions，Regex(es)，Regexp</p>
+<p>一般可以用在html解析(e.g.爬虫解析)或者域名解析等方面</p>
+<hr>
+<h4 id="2-普通字符-Literal-Characters-与特殊字符-Special-Characters"><a href="#2-普通字符-Literal-Characters-与特殊字符-Special-Characters" class="headerlink" title="2.普通字符(Literal Characters)与特殊字符(Special Characters)"></a>2.普通字符(Literal Characters)与特殊字符(Special Characters)</h4><h5 id="1-普通字符"><a href="#1-普通字符" class="headerlink" title="1.普通字符"></a>1.普通字符</h5><p>最简单的，比如cat即可匹配 <code>About cats and dogs</code>中的cat，普通字符匹配区分大小写，不区分空格，正常为匹配第一个，可通过相应的engine来操作逐个匹配或匹配所有，也可以用后面的内容来匹配更多项</p>
+<h5 id="2-特殊字符"><a href="#2-特殊字符" class="headerlink" title="2.特殊字符"></a>2.特殊字符</h5><p>特殊字符是在匹配中有特殊用处的，目前有12个有特殊含义的字符，一般被称作metacharacters</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">name</th>
+<th style="text-align:center">backslash</th>
+<th style="text-align:center">caret</th>
+<th style="text-align:center">dollar sign</th>
+<th style="text-align:center">period/dot</th>
+<th style="text-align:center">vertical bar/pipe symbol</th>
+<th style="text-align:center">question mark</th>
+<th style="text-align:center">asterisk/star</th>
+<th style="text-align:center">plus sign</th>
+<th style="text-align:center">opening parenthesis</th>
+<th style="text-align:center">closing parenthesis</th>
+<th style="text-align:center">opening square bracket</th>
+<th style="text-align:center">opening curly brace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Character</strong></td>
+<td style="text-align:center">/</td>
+<td style="text-align:center">^</td>
+<td style="text-align:center">$</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">\</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">?</td>
+<td style="text-align:center">*</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">(</td>
+<td style="text-align:center">)</td>
+<td style="text-align:center">[</td>
+<td>]</td>
+</tr>
+</tbody>
+</table>
+<p>这些字符正常匹配时必须加\，类似编程语言中的转义</p>
+<p>除这些字符外的其他字符不能使用\，否则会表示其他意思，如\d则会匹配0-9的数字</p>
+<p>在JGsoft_engine, Perl, PCRE, PHP, Delphi, Java中还支持\Q…\E批量转义</p>
+<h5 id="3-编程语言与特殊字符"><a href="#3-编程语言与特殊字符" class="headerlink" title="3.编程语言与特殊字符"></a>3.编程语言与特殊字符</h5><p>编程语言的引号内转义字符可能和正则表达式重复</p>
+<p>比如C++中 regex <code>1\+1=2</code>要写成<code>&quot;1\\+1=2&quot;</code></p>
+<p>regex <code>c:\\temp</code>要写成<code>&quot;c:\\\\temp&quot;</code></p>
+<hr>
+<h4 id="3-非打印字符（Non-Printable-Characters）"><a href="#3-非打印字符（Non-Printable-Characters）" class="headerlink" title="3.非打印字符（Non-Printable Characters）"></a>3.非打印字符（Non-Printable Characters）</h4><h5 id="1-非打印字符"><a href="#1-非打印字符" class="headerlink" title="1.非打印字符"></a>1.非打印字符</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">Character</th>
+<th style="text-align:center">\t</th>
+<th style="text-align:center">\r</th>
+<th style="text-align:center">\n</th>
+<th style="text-align:center">\a</th>
+<th style="text-align:center">\e</th>
+<th style="text-align:center">\f</th>
+<th style="text-align:center">\r\n(\n)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ASCII</td>
+<td style="text-align:center">0x09</td>
+<td style="text-align:center">0x0D</td>
+<td style="text-align:center">0x0A</td>
+<td style="text-align:center">0x07</td>
+<td style="text-align:center">0x1B</td>
+<td style="text-align:center">0x0C</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">name</td>
+<td style="text-align:center">tab</td>
+<td style="text-align:center">return</td>
+<td style="text-align:center">line feed</td>
+<td style="text-align:center">bell</td>
+<td style="text-align:center">escap</td>
+<td style="text-align:center">form feed</td>
+<td style="text-align:center">terminate lines</td>
+</tr>
+</tbody>
+</table>
+<p>在某些flavor中，\v可以匹配垂直制表符（0x0B）,另一些地方\v可以匹配全部空白制表符</p>
+<p>某些flavor可以匹配\cA-\cZ,等于匹配Control+A，等价于\x01-\x1A(26)，这个不被建议使用。</p>
+<p>如果正则引擎支持Unicode，可以使用\uFFFF 或 \x{FFFF} 插入Unicode字符</p>
+<h5 id="2-正则句法VS字符串句法"><a href="#2-正则句法VS字符串句法" class="headerlink" title="2.正则句法VS字符串句法"></a>2.正则句法VS字符串句法</h5><p>某些变成语言中对于字符串的处理可能会处理掉正则表达式中的句法。</p>
+<hr>
+<h4 id="4-正则引擎内部运作（Regex-Engine-Internals）"><a href="#4-正则引擎内部运作（Regex-Engine-Internals）" class="headerlink" title="4.正则引擎内部运作（Regex Engine Internals）"></a>4.正则引擎内部运作（Regex Engine Internals）</h4><p>两个基础正则表达式引擎，text-directed engines和regex-directed engines，目前几乎所有现代正则flavor基于regex-directed engines</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/11/Ubuntu-安装apache2-php5-mysql-phpmyadmin/" class="archive-article-date">
-  	<time datetime="2017-11-11T02:15:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/11/Ubuntu-安装apache2-php5-mysql-phpmyadmin/">Ubuntu 安装apache2 + php5 + mysql + phpmyadmin</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-技术记录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-notes</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/12/10/regular-expressions/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/07/Operating System Learning Notes 9/" class="archive-article-date">
-  	<time datetime="2017-11-07T03:10:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/08/Information-Sharing-for-Supply-Chain-Management-based-on-Block-Chain-Technology论文阅读/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Information Sharing for Supply Chain Management based on Block Chain Technology论文阅读</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/07/Operating System Learning Notes 9/">Operatng System Learning Notes 9</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-Notes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/03/Operating System Learning Notes 2/" class="archive-article-date">
-  	<time datetime="2017-11-03T03:10:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/03/Operating System Learning Notes 2/">Operatng System Learning Notes 1</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-Notes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/03/Operating System Learning Notes 1/" class="archive-article-date">
-  	<time datetime="2017-11-03T03:10:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/03/Operating System Learning Notes 1/">Operatng System Learning Notes 1</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-Notes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -342,8 +411,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
