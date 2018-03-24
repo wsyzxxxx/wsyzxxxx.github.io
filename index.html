@@ -154,6 +154,118 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux-创建新用户" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/24/Linux-创建新用户/">Linux 创建新用户</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/24/Linux-创建新用户/" class="archive-article-date">
+  	<time datetime="2018-03-24T07:01:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Linux-创建新用户并分配权限"><a href="#Linux-创建新用户并分配权限" class="headerlink" title="Linux 创建新用户并分配权限"></a>Linux 创建新用户并分配权限</h2><h5 id="一、常用命令："><a href="#一、常用命令：" class="headerlink" title="一、常用命令："></a>一、常用命令：</h5><ol>
+<li>一般来说Liux有两种创建用户的命令，分别为：</li>
+</ol>
+<p><code>adduser</code> 和 <code>useradd</code></p>
+<ol>
+<li>用户删除命令只有一个</li>
+</ol>
+<p><code>userdel</code></p>
+<h5 id="二、两个用户创建命令的区别："><a href="#二、两个用户创建命令的区别：" class="headerlink" title="二、两个用户创建命令的区别："></a>二、两个用户创建命令的区别：</h5><p><code>adduser</code>： 会自动为创建的用户指定主目录、系统shell版本，会在创建时输入用户密码。</p>
+<p><code>useradd</code>：需要使用参数选项指定上述基本设置，如果不使用任何参数，则创建的用户无密码、无主目录、没有指定shell版本。</p>
+<h5 id="三、使用adduser"><a href="#三、使用adduser" class="headerlink" title="三、使用adduser"></a>三、使用adduser</h5><p>例如：</p>
+<p><code>root@AliyunLinux:/home# adduser xw</code></p>
+<p>输出显示</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Adding user `xw' ...</div><div class="line">Adding new group `xw' (1000) ...</div><div class="line">Adding new user `xw' (1000) with group `xw' ...</div><div class="line">Creating home directory `/home/xw' ...</div><div class="line">Copying files from `/etc/skel' ...</div><div class="line">Enter new UNIX password: </div><div class="line">Retype new UNIX password: </div><div class="line">passwd: password updated successfully</div><div class="line">Changing the user information for xw</div><div class="line">Enter the new value, or press ENTER for the default</div><div class="line">	Full Name []: Xue Wei</div><div class="line">	Room Number []: </div><div class="line">	Work Phone []: </div><div class="line">	Home Phone []: </div><div class="line">	Other []: </div><div class="line">Is the information correct? [Y/n] Y</div></pre></td></tr></table></figure>
+<p>这样在创建用户名时，就创建了用户的主目录以及密码。</p>
+<p>默认情况下：</p>
+<p>adduser在创建用户时会主动调用  /etc/adduser.conf；</p>
+<p>在创建用户主目录时默认在/home下，而且创建为 /home/用户名  </p>
+<p>如果主目录已经存在，就不再创建，但是此主目录虽然作为新因此常用参数选项为：</p>
+<p>（1）   –home：                       指定创建主目录的路径，默认是在/home目录下创建用户名同名的目录，这里可以指定；如果主目录同名目录存在，则不再创建，仅在登录时进入主目录。</p>
+<p>（2）   –quiet：                        即只打印警告和错误信息，忽略其他信息。</p>
+<p>（3）   –debug：                     定位错误信息。</p>
+<p>（4）   –conf：                         在创建用户时使用指定的configuration文件。</p>
+<p>（5）   –force-badname：     默认在创建用户时会进行/etc/adduser.conf中的正则表达式检查用户名是否合法，如果想使用弱检查，则使用这个选项，如果不想检查，可以将/etc/adduser.conf中相关选项屏蔽。的主目录，而且默认登录时会进入这个目录下，但是这个目录并不是属于新用户，当使用userdel删除新用户时，并不会删除这个主目录，因为这个主目录在创建前已经存在且并不属于这个用户。</p>
+<p>为用户指定shell版本为：/bin/bash</p>
+<h5 id="四、使用useradd"><a href="#四、使用useradd" class="headerlink" title="四、使用useradd"></a>四、使用useradd</h5><p><code>useradd</code>命令则没有一系列的自动操作，一切都需要手动制定。</p>
+<p>常用命令行选项：</p>
+<p>（1） -d：           指定用户的主目录</p>
+<p>（2） -m：          如果存在不再创建，但是此目录并不属于新创建用户；如果主目录不存在，则强制创建； -m和-d一块使用。</p>
+<p>（3） -s：           指定用户登录时的shell版本</p>
+<p>（4） -M：           不创建主目录</p>
+<p>例如：</p>
+<p><code>$   sudo  useradd  -d  &quot;/home/tt&quot;   -m   -s &quot;/bin/bash&quot;   tt</code></p>
+<p>还需要单独创建密码</p>
+<p><code>sudo passwd tt</code></p>
+<h5 id="五、添加权限"><a href="#五、添加权限" class="headerlink" title="五、添加权限"></a>五、添加权限</h5><p>修改文件：</p>
+<p><code>$ sudo vi /etc/sudoers</code></p>
+<p>仿照<code>root    ALL=(ALL:ALL) ALL</code>在下面添加一行用户即可</p>
+<p>如<code>xw      ALL=(ALL:ALL) ALL</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tips</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/24/Linux-创建新用户/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-regular-expressions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -650,85 +762,6 @@
 
 
   
-    <article id="post-Operating System Learning Notes 2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/03/Operating System Learning Notes 2/">Operatng System Learning Notes 1</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/03/Operating System Learning Notes 2/" class="archive-article-date">
-  	<time datetime="2017-11-03T03:10:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Chapter-2-Operating-System-Structures"><a href="#Chapter-2-Operating-System-Structures" class="headerlink" title="Chapter 2 - Operating-System Structures"></a>Chapter 2 - Operating-System Structures</h1><blockquote>
-<p>这是我Operating System Concepts 9th Edition及课堂学习心得</p>
-<p>本章主要介绍了一些概念性的知识，对操作系统进行了一个简单的介绍</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/11/03/Operating System Learning Notes 2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-Notes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/03/Operating System Learning Notes 2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Operating System Learning Notes 1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -779,6 +812,85 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/11/03/Operating System Learning Notes 1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Operating System Learning Notes 2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/03/Operating System Learning Notes 2/">Operatng System Learning Notes 1</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/03/Operating System Learning Notes 2/" class="archive-article-date">
+  	<time datetime="2017-11-03T03:10:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Chapter-2-Operating-System-Structures"><a href="#Chapter-2-Operating-System-Structures" class="headerlink" title="Chapter 2 - Operating-System Structures"></a>Chapter 2 - Operating-System Structures</h1><blockquote>
+<p>这是我Operating System Concepts 9th Edition及课堂学习心得</p>
+<p>本章主要介绍了一些概念性的知识，对操作系统进行了一个简单的介绍</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/11/03/Operating System Learning Notes 2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-Notes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/03/Operating System Learning Notes 2/">展开全文 >></a>
         </p>
       
 
@@ -970,6 +1082,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">-Notes</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">-技术记录</a>
               </li>
              
@@ -978,7 +1094,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">-Notes</a>
+                <a href="javascript:void(0)" class="js-tag color5">tips</a>
               </li>
             
             <div class="clearfix"></div>
